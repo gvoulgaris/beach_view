@@ -1,6 +1,7 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.page(params[:page]).per(10)
+    @q = Island.ransack(params[:q])
+    @islands = @q.result(:distinct => true).includes(:beaches).page(params[:page]).per(10)
 
     render("islands/index.html.erb")
   end
