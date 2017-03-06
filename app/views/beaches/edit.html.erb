@@ -132,7 +132,7 @@
           Island
         </label>
 
-        <input type="text" id="island_id" name="island_id" placeholder="Island" class="form-control" value="<%= @beach.island_id %>">
+        <%= select_tag(:island_id, options_from_collection_for_select(Island.all, :id, :island_name, @beach.island_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
