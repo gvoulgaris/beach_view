@@ -6,6 +6,7 @@ class IslandsController < ApplicationController
   end
 
   def show
+    @beach = Beach.new
     @island = Island.find(params[:id])
 
     render("islands/show.html.erb")

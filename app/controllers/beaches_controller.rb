@@ -6,6 +6,8 @@ class BeachesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @photo = Photo.new
     @beach = Beach.find(params[:id])
 
     render("beaches/show.html.erb")
