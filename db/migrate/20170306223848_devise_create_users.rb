@@ -32,7 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       t.string :email
       t.string :password
-      t.string :administrator
+      t.boolean :administrator
 
       t.timestamps null: false
     end
