@@ -33,7 +33,7 @@
           Beach
         </label>
 
-        <input type="text" id="beach_id" name="beach_id" placeholder="Beach" class="form-control" value="<%= @comment.beach_id %>">
+        <%= select_tag(:beach_id, options_from_collection_for_select(Beach.all, :id, :beach_name, @comment.beach_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
