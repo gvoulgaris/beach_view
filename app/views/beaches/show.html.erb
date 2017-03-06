@@ -42,7 +42,13 @@
       <dd><%= @beach.shark_attacks %></dd>
 
       <dt>Island</dt>
-      <dd><%= @beach.island_id %></dd>
+      <dd>
+        <% if @beach.island.present? %>
+          <a href="/islands/<%= @beach.island_id %>">
+            <%= @beach.island.island_name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

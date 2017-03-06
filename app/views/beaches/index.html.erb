@@ -39,7 +39,13 @@
         <td><%= beach.terrain_color %></td>
         <td><%= beach.water_type %></td>
         <td><%= beach.shark_attacks %></td>
-        <td><%= beach.island.island_name %></td>
+        <td>
+          <% if beach.island.present? %>
+            <a href="/islands/<%= beach.island.id %>">
+              <%= beach.island.island_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/beaches/<%= beach.id %>" class="btn btn-primary">Show</a>
           <a href="/beaches/<%= beach.id %>/edit" class="btn btn-warning">Edit</a>
