@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "beaches#index"
   # Routes for the Island resource:
   # CREATE
   get "/islands/new", :controller => "islands", :action => "new"
