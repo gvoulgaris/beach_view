@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>
+    Beaches
+    <a href="/beaches/new" class="btn btn-lg btn-success">New Beach</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Beach name</th>
+        <th>Location</th>
+        <th>Weather</th>
+        <th>Sunset</th>
+        <th>Tides</th>
+        <th>Wave height</th>
+        <th>Entrance fee</th>
+        <th>Umbrella fee</th>
+        <th>Terrain</th>
+        <th>Terrain color</th>
+        <th>Water type</th>
+        <th>Shark attacks</th>
+        <th>Island</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @beaches.each do |beach| %>
+      <tr>
+        <td><%= beach.beach_name %></td>
+        <td><%= beach.location %></td>
+        <td><%= beach.weather %></td>
+        <td><%= beach.sunset %></td>
+        <td><%= beach.tides %></td>
+        <td><%= beach.wave_height %></td>
+        <td><%= beach.entrance_fee %></td>
+        <td><%= beach.umbrella_fee %></td>
+        <td><%= beach.terrain %></td>
+        <td><%= beach.terrain_color %></td>
+        <td><%= beach.water_type %></td>
+        <td><%= beach.shark_attacks %></td>
+        <td><%= beach.island_id %></td>
+        <td>
+          <a href="/beaches/<%= beach.id %>" class="btn btn-primary">Show</a>
+          <a href="/beaches/<%= beach.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_beach/<%= beach.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

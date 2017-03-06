@@ -1,0 +1,145 @@
+<!-- Validation failure messages -->
+<% if @beach.errors.any? %>
+  <% @beach.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Beach</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_beach" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for beach_name -->
+      <div class="form-group">
+        <label for="beach_name" class="control-label">
+          Beach name
+        </label>
+
+        <input type="text" id="beach_name" name="beach_name" placeholder="Beach name" class="form-control" value="<%= @beach.beach_name %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @beach.location %>">
+      </div>
+
+      <!-- Label and input for weather -->
+      <div class="form-group">
+        <label for="weather" class="control-label">
+          Weather
+        </label>
+
+        <input type="text" id="weather" name="weather" placeholder="Weather" class="form-control" value="<%= @beach.weather %>">
+      </div>
+
+      <!-- Label and input for sunset -->
+      <div class="form-group">
+        <label for="sunset" class="control-label">
+          Sunset
+        </label>
+
+        <input type="text" id="sunset" name="sunset" placeholder="Sunset" class="form-control" value="<%= @beach.sunset %>">
+      </div>
+
+      <!-- Label and input for tides -->
+      <div class="form-group">
+        <label for="tides" class="control-label">
+          Tides
+        </label>
+
+        <input type="text" id="tides" name="tides" placeholder="Tides" class="form-control" value="<%= @beach.tides %>">
+      </div>
+
+      <!-- Label and input for wave_height -->
+      <div class="form-group">
+        <label for="wave_height" class="control-label">
+          Wave height
+        </label>
+
+        <input type="text" id="wave_height" name="wave_height" placeholder="Wave height" class="form-control" value="<%= @beach.wave_height %>">
+      </div>
+
+      <!-- Label and input for entrance_fee -->
+      <div class="form-group">
+        <label for="entrance_fee" class="control-label">
+          Entrance fee
+        </label>
+
+        <input type="text" id="entrance_fee" name="entrance_fee" placeholder="Entrance fee" class="form-control" value="<%= @beach.entrance_fee %>">
+      </div>
+
+      <!-- Label and input for umbrella_fee -->
+      <div class="form-group">
+        <label for="umbrella_fee" class="control-label">
+          Umbrella fee
+        </label>
+
+        <input type="text" id="umbrella_fee" name="umbrella_fee" placeholder="Umbrella fee" class="form-control" value="<%= @beach.umbrella_fee %>">
+      </div>
+
+      <!-- Label and input for terrain -->
+      <div class="form-group">
+        <label for="terrain" class="control-label">
+          Terrain
+        </label>
+
+        <input type="text" id="terrain" name="terrain" placeholder="Terrain" class="form-control" value="<%= @beach.terrain %>">
+      </div>
+
+      <!-- Label and input for terrain_color -->
+      <div class="form-group">
+        <label for="terrain_color" class="control-label">
+          Terrain color
+        </label>
+
+        <input type="text" id="terrain_color" name="terrain_color" placeholder="Terrain color" class="form-control" value="<%= @beach.terrain_color %>">
+      </div>
+
+      <!-- Label and input for water_type -->
+      <div class="form-group">
+        <label for="water_type" class="control-label">
+          Water type
+        </label>
+
+        <input type="text" id="water_type" name="water_type" placeholder="Water type" class="form-control" value="<%= @beach.water_type %>">
+      </div>
+
+      <!-- Label and input for shark_attacks -->
+      <div class="form-group">
+        <label for="shark_attacks" class="control-label">
+          Shark attacks
+        </label>
+
+        <input type="text" id="shark_attacks" name="shark_attacks" placeholder="Shark attacks" class="form-control" value="<%= @beach.shark_attacks %>">
+      </div>
+
+      <!-- Label and input for island_id -->
+      <div class="form-group">
+        <label for="island_id" class="control-label">
+          Island
+        </label>
+
+        <input type="text" id="island_id" name="island_id" placeholder="Island" class="form-control" value="<%= @beach.island_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Beach
+      </button>
+      or
+      <a href="/beaches">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h3>Beach #<%= @beach.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Beach name</dt>
+      <dd><%= @beach.beach_name %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @beach.location %></dd>
+
+      <dt>Weather</dt>
+      <dd><%= @beach.weather %></dd>
+
+      <dt>Sunset</dt>
+      <dd><%= @beach.sunset %></dd>
+
+      <dt>Tides</dt>
+      <dd><%= @beach.tides %></dd>
+
+      <dt>Wave height</dt>
+      <dd><%= @beach.wave_height %></dd>
+
+      <dt>Entrance fee</dt>
+      <dd><%= @beach.entrance_fee %></dd>
+
+      <dt>Umbrella fee</dt>
+      <dd><%= @beach.umbrella_fee %></dd>
+
+      <dt>Terrain</dt>
+      <dd><%= @beach.terrain %></dd>
+
+      <dt>Terrain color</dt>
+      <dd><%= @beach.terrain_color %></dd>
+
+      <dt>Water type</dt>
+      <dd><%= @beach.water_type %></dd>
+
+      <dt>Shark attacks</dt>
+      <dd><%= @beach.shark_attacks %></dd>
+
+      <dt>Island</dt>
+      <dd><%= @beach.island_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/beaches" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/beaches/<%= @beach.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_beach/<%= @beach.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
