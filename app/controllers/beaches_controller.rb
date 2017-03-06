@@ -1,6 +1,6 @@
 class BeachesController < ApplicationController
   def index
-    @beaches = Beach.all
+    @beaches = Beach.page(params[:page]).per(10)
 
     render("beaches/index.html.erb")
   end

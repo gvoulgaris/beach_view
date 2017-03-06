@@ -1,6 +1,6 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.all
+    @islands = Island.page(params[:page]).per(10)
 
     render("islands/index.html.erb")
   end
