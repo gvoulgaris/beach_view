@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Island resource:
+  # CREATE
+  get "/islands/new", :controller => "islands", :action => "new"
+  post "/create_island", :controller => "islands", :action => "create"
+
+  # READ
+  get "/islands", :controller => "islands", :action => "index"
+  get "/islands/:id", :controller => "islands", :action => "show"
+
+  # UPDATE
+  get "/islands/:id/edit", :controller => "islands", :action => "edit"
+  post "/update_island/:id", :controller => "islands", :action => "update"
+
+  # DELETE
+  get "/delete_island/:id", :controller => "islands", :action => "destroy"
+  #------------------------------
+
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
