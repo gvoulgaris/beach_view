@@ -41,6 +41,11 @@
   </div>
 
 <div class="form-group">
+    <%= f.label :available_activities_with_fees_cont, "Available activities with fees contains" %>
+    <%= f.text_field :available_activities_with_fees_cont, :class => "form-control", :placeholder => "Available activities with fees contains" %>
+  </div>
+
+<div class="form-group">
   <%= f.label :umbrella_fee, "Umbrella fee" %>
   <div class="row">
     <div class='col-md-6 mb-1'>
@@ -55,71 +60,6 @@
 <div class="form-group">
     <%= f.label :entrance_fee_cont, "Entrance fee contains" %>
     <%= f.text_field :entrance_fee_cont, :class => "form-control", :placeholder => "Entrance fee contains" %>
-  </div>
-
-<div class="form-group">
-  <%= f.label :wave_height, "Wave height" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :wave_height_gteq, :class => "form-control", :placeholder => "Wave height greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :wave_height_lteq, :class => "form-control", :placeholder => "Wave height less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :tides, "Tides" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :tides_gteq, :class => "form-control", :placeholder => "Tides greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :tides_lteq, :class => "form-control", :placeholder => "Tides less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-        <%= f.label :sunset, "Sunset" %>
-        <div class="row">
-          <div class='col-md-6 mb-1'>
-            <div class='input-group date' id='sunsetgteqPicker'>
-              <%= f.text_field :sunset_gteq, :class => "form-control", :placeholder => "Sunset greater than or equal to" %>
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-              </span>
-              <script type="text/javascript">
-                $(function () {
-                    $('#sunsetgteqPicker').datetimepicker({
-                      format: 'LT'
-                    });
-                });
-              </script>
-            </div>
-          </div>
-          <div class='col-md-6'>
-            <div class='input-group date' id='sunsetlteqPicker'>
-              <%= f.text_field :sunset_lteq, :class => "form-control", :placeholder => "Sunset less than or equal to" %>
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-              </span>
-              <script type="text/javascript">
-                $(function () {
-                    $('#sunsetlteqPicker').datetimepicker({
-                      format: 'LT'
-                    });
-                });
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<div class="form-group">
-    <%= f.label :weather_cont, "Weather contains" %>
-    <%= f.text_field :weather_cont, :class => "form-control", :placeholder => "Weather contains" %>
   </div>
 
 <div class="form-group">
@@ -188,12 +128,9 @@
       <tr>
         <th>Beach name</th>
         <th>Location</th>
-        <th>Weather</th>
-        <th>Sunset</th>
-        <th>Tides</th>
-        <th>Wave height</th>
         <th>Entrance fee</th>
         <th>Umbrella fee</th>
+        <th>Available activities with fees</th>
         <th>Terrain</th>
         <th>Terrain color</th>
         <th>Water type</th>
@@ -206,12 +143,9 @@
       <tr>
         <td><%= beach.beach_name %></td>
         <td><%= beach.location %></td>
-        <td><%= beach.weather %></td>
-        <td><%= beach.sunset %></td>
-        <td><%= beach.tides %></td>
-        <td><%= beach.wave_height %></td>
         <td><%= beach.entrance_fee %></td>
         <td><%= beach.umbrella_fee %></td>
+        <td><%= beach.available_activities_with_fees %></td>
         <td><%= beach.terrain %></td>
         <td><%= beach.terrain_color %></td>
         <td><%= beach.water_type %></td>
