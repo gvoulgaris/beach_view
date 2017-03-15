@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "beaches#index"
+  root :to => "islands#index"
   # Routes for the Island resource:
   # CREATE
   get "/islands/new", :controller => "islands", :action => "new"

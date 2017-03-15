@@ -1,28 +1,22 @@
 <div class="page-header">
-  <h3>Island #<%= @island.id %></h3>
+  <h3><%= @island.island_name %>, <%= @island.location %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Island name</dt>
-      <dd><%= @island.island_name %></dd>
-
-      <dt>Location</dt>
-      <dd><%= @island.location %></dd>
-
-    </dl>
 
     <div class="btn-group btn-group-justified">
       <a href="/islands" class="btn btn-primary">
         Back
       </a>
+      <% if current_user.administrator == true %>
       <a href="/islands/<%= @island.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_island/<%= @island.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end %>
     </div>
   </div>
 </div>
@@ -36,7 +30,7 @@
         Beaches
       </li>
 
-      <% @island.beaches.each do |beach| %>
+      <% @island.beaches.order(:beach_name).each do |beach| %>
         <li class="list-group-item">
           <a href="/beaches/<%= beach.id %>">
             <%= beach.beach_name %>
@@ -45,17 +39,20 @@
             <a href="/beaches/<%= beach.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
+            <% if current_user.administrator == true %>
             <a href="/beaches/<%= beach.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_beach/<%= beach.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
+            <% end %>
           </div>
         </li>
       <% end %>
 
-      <li class="list-group-item">
+    <li class="list-group-item">
+      <% if current_user.administrator == true %>
         <form action="/create_beach" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -148,6 +145,7 @@
         Create Beach
       </button>
     </form>
+    <% end %>
       </li>
     </ul>
   </div>

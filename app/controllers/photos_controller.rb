@@ -31,6 +31,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new
 
+    @photo.image = params[:image]
     @photo.user_id = params[:user_id]
     @photo.beach_id = params[:beach_id]
 

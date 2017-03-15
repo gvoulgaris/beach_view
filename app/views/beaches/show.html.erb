@@ -1,13 +1,10 @@
 <div class="page-header">
-  <h3>Beach #<%= @beach.id %></h3>
+  <h3><%= @beach.beach_name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Beach name</dt>
-      <dd><%= @beach.beach_name %></dd>
-
       <dt>Location</dt>
       <dd><%= @beach.location %></dd>
 
@@ -32,6 +29,9 @@
       <dt>Shark attacks</dt>
       <dd><%= @beach.shark_attacks %></dd>
 
+      <dt>Image</dt>
+      <dd><img src="<%= @beach.image %>" class="img-responsive"> </dd>
+
       <dt>Island</dt>
       <dd>
         <% if @beach.island.present? %>
@@ -44,15 +44,17 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/beaches" class="btn btn-primary">
+      <a href="/islands" class="btn btn-primary">
         Back
       </a>
+      <% if current_user.administrator == true %>
       <a href="/beaches/<%= @beach.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_beach/<%= @beach.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end %>
     </div>
   </div>
 </div>
@@ -60,7 +62,7 @@
 <!-- A Beach has many photos -->
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Photos
@@ -69,14 +71,12 @@
       <% @beach.photos.each do |photo| %>
         <li class="list-group-item">
           <a href="/photos/<%= photo.id %>">
-            <%= photo.user_id %>
+            <img class="img-responsive" src="<%= photo.image %>">
           </a>
+
           <div class="btn-group btn-group-xs pull-right">
             <a href="/photos/<%= photo.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
@@ -89,6 +89,15 @@
         <form action="/create_photo" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input id="image" type="file" name="image" class="form-control">
+      </div>
 
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -103,12 +112,10 @@
       </li>
     </ul>
   </div>
-</div>
 
 <!-- A Beach has many comments -->
 
-<div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Comments
@@ -117,8 +124,9 @@
       <% @beach.comments.each do |comment| %>
         <li class="list-group-item">
           <a href="/comments/<%= comment.id %>">
-            <%= comment.user_id %>
+            <%= comment.user.email %>
           </a>
+
           <div class="btn-group btn-group-xs pull-right">
             <a href="/comments/<%= comment.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
@@ -138,14 +146,17 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for comment -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="comment" class="control-label">
+          Comment
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :created_at), :class => "form-control") %>
+        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="">
       </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for beach_id -->
       <input type="hidden" name="beach_id" value="<%= @beach.id %>">

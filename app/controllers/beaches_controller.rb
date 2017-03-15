@@ -33,6 +33,7 @@ class BeachesController < ApplicationController
     @beach.water_type = params[:water_type]
     @beach.shark_attacks = params[:shark_attacks]
     @beach.island_id = params[:island_id]
+    @beach.image = params[:image]
 
     save_status = @beach.save
 

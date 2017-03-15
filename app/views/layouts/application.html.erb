@@ -41,19 +41,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/islands">Islands</a></li>
-          <li><a href="/comments">Comments</a></li>
-          <li><a href="/photos">Photos</a></li>
-          <li><a href="/users">Users</a></li>
-          <li><a href="/beaches">Beaches</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
             <li>
               <a href="/users/edit">
-                <%= current_user.created_at %>
+                <%= current_user.email %>
               </a>
             </li>
 

@@ -5,11 +5,18 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Image</dt>
+      <dd>
+        <% if @photo.image.present? %>
+        <img class="img-responsive" src="<%= @photo.image %>">
+        <% end %>
+      </dd>
+      
       <dt>User</dt>
       <dd>
         <% if @photo.user.present? %>
           <a href="/users/<%= @photo.user_id %>">
-            <%= @photo.user.created_at %>
+            <%= @photo.user.email %>
           </a>
         <% end %>
       </dd>
