@@ -44,7 +44,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/islands" class="btn btn-primary">
+      <a href="javascript:history.back()" class="btn btn-primary">
         Back
       </a>
       <% if current_user.administrator == true %>
@@ -78,9 +78,17 @@
             <a href="/photos/<%= photo.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
+            <% if current_user.id = photo.user.id %>
             <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
+            <% else %>
+            <% if current_user.administrator == true %>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <% end %>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -128,14 +136,15 @@
           </a>
           : <%= comment.comment_text %>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/comments/<%= comment.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/comments/<%= comment.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
+            <% if current_user.id = comment.user.id %>
             <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
+              <% else %>
+            <% if current_user.administrator == true %>
+            <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+              <% end %>
+                <% end %>
             </a>
           </div>
         </li>
