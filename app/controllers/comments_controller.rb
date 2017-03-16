@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new
 
-    @comment.comment = params[:comment]
+    @comment.comment_text = params[:comment_text]
     @comment.user_id = params[:user_id]
     @comment.beach_id = params[:beach_id]
 

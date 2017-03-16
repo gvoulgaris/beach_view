@@ -86,7 +86,7 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_photo" method="post">
+      <form action="/create_photo" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -96,7 +96,7 @@
           Image
         </label>
 
-        <input id="image" type="file" name="image" class="form-control">
+        <input type="file" name="image" class="form-control" />
       </div>
 
       <!-- Label and input for user_id -->
@@ -126,7 +126,7 @@
           <a href="/comments/<%= comment.id %>">
             <%= comment.user.email %>
           </a>
-          : <%= comment.comment %>
+          : <%= comment.comment_text %>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/comments/<%= comment.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
@@ -152,7 +152,7 @@
           Comment
         </label>
 
-        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="">
+        <input type="text" id="comment_text" name="comment_text" placeholder="Comment" class="form-control" >
       </div>
 
       <!-- Label and input for user_id -->
