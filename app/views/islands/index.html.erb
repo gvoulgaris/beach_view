@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
     Islands
-      <% if current_user.administrator == true %>
-    <a href="/islands/new" class="btn btn-lg btn-success">New Island</a>
+    <% if current_user.administrator %>
+      <a href="/islands/new" class="btn btn-lg btn-success">New Island</a>
     <% end %>
   </h1>
 </div><div class="row mb-1">
@@ -89,10 +89,10 @@
         <td><%= island.island_name %></td>
         <td><%= island.location %></td>
         <td>
-          <a href="/islands/<%= island.id %>" class="btn btn-primary">Show</a>
+          <a href="/islands/<%= island.id %>" class="btn btn-primary btn-lg">Show</a>
             <% if current_user.administrator == true %>
-          <a href="/islands/<%= island.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_island/<%= island.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/islands/<%= island.id %>/edit" class="btn btn-warning btn-lg">Edit</a>
+          <a href="/delete_island/<%= island.id %>" class="btn btn-danger btn-lg" rel="nofollow">Delete</a>
           <% end %>
         </td>
       </tr>

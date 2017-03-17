@@ -133,15 +133,10 @@
         <li class="list-group-item">
             <%= comment.user.email %>: <%= comment.comment_text %>
           <div class="btn-group btn-group-xs pull-right">
-            <% if current_user.id = comment.user.id %>
+            <% if current_user.id = comment.user.id ||  current_user.administrator == true %>
             <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
-              <% else %>
-            <% if current_user.administrator == true %>
-            <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-              <% end %>
-                <% end %>
+            <% end %>
             </a>
           </div>
         </li>
@@ -160,9 +155,6 @@
 
         <input type="text" id="comment_text" name="comment_text" placeholder="Comment" class="form-control" >
       </div>
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for beach_id -->
       <input type="hidden" name="beach_id" value="<%= @beach.id %>">

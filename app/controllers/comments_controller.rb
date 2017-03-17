@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
 
     @comment.comment_text = params[:comment_text]
-    @comment.user_id = params[:user_id]
+    @comment.user_id = current_user.id
     @comment.beach_id = params[:beach_id]
 
     save_status = @comment.save
